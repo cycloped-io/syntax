@@ -5,7 +5,7 @@ require 'set'
 require 'csv'
 require 'slop'
 require 'progress'
-require 'cyclopediosyntax'
+require 'cyclopedio/syntax'
 
 options = Slop.new do
   banner "Usage: filter_administrative.rb -p parsed_path -o output_path -a administrative_path\n" +
