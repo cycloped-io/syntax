@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.email   = ['djstrong@gmail.com', 'apohllo@o2.pl']
   s.homepage    = "http://github.com/cycloped-io/syntax"
   s.summary = "English syntax manipulation for cycloped.io"
-  s.description = "Library for manipulating sentence parses produced by Stanford NLP and similar tools"
+  s.description = "Library for manipulating sentence parses produced by Stanford NLP and similar tools used to manipulate English Wikipedia category names"
 
   s.rubyforge_project = "cyclopedio-syntax"
   s.rdoc_options = ["--main", "Readme.md"]
