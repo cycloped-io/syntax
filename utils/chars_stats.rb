@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-$:.unshift 'lib'
-
 require 'bundler/setup'
 require 'csv'
 require 'set'
@@ -27,23 +25,16 @@ rescue Slop::MissingOptionError
   exit
 end
 
-categories = options[:categories]
 
 char_stats = Hash.new
-
-file_categories = CSV.open(categories, 'r')
-
-Progress.start(file_categories.stat.size)
-file_categories.each do |row|
-  Progress.set(file_categories.pos)
-  category_name = row[1]
-  Set.new(category_name.split('')).each do |char|
-    (char_stats[char] ||= []) << category_name
+CSV.open(options[:categories], 'r:utf-8') do |input|
+  input.each do |row|
+    category_name = row[1]
+    Set.new(category_name.split('')).each do |char|
+      (char_stats[char] ||= []) << category_name
+    end
   end
-
 end
-Progress.stop
-file_categories.close
 
 puts '| Char | Category count | Sample |'
 puts '| --- | --- | --- |'

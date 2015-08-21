@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-$:.unshift "lib"
 require 'bundler/setup'
 require 'set'
 require 'csv'
