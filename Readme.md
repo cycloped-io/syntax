@@ -5,12 +5,12 @@
 tldr;
 
 ```bash
-wiki$ export WIKI_DATA=/path/to/data 
-wiki$ export WIKI_DB=/path/to/db 
-wiki$ export STANFORD_PARSER=path/to/parser
-wiki$ export STANFORD_MODELS=path/to/models
-wiki$ export JAVA_HOME=path/to/jre
-wiki$ rake
+syntax$ export WIKI_DATA=/path/to/data 
+syntax$ export WIKI_DB=/path/to/db 
+syntax$ export STANFORD_PARSER=path/to/parser
+syntax$ export STANFORD_MODELS=path/to/models
+syntax$ export JAVA_HOME=path/to/jre
+syntax$ rake
 ```
 
 is equivalent to:
