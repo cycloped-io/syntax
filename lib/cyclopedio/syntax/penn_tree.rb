@@ -157,6 +157,8 @@ module Cyclopedio
         end
         arguments.push argument
 
+
+
         heads = []
         arguments.each do |argument|
           np = Stanford::Node.new(-1,'NP')

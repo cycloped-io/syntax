@@ -22,8 +22,6 @@ rescue Slop::MissingOptionError
   exit
 end
 
-file_output =
-
 administrative = Set.new
 CSV.open(options[:administrative_path], "r:utf-8") do |input|
   input.each do |category_tuple|
