@@ -5,15 +5,14 @@ module Cyclopedio
   module Syntax
 
     class NameDecorator < SimpleDelegator
-      def initialize(category, options={})
-        @category = category
+      def initialize(concept, options={})
         @parse_tree_factory = options[:parse_tree_factory] || Cyclopedio::Syntax::Stanford::Converter
-        super(@category)
+        super(concept)
       end
 
       # Returns the first parse tree of the +category+ name.
       def category_head_tree
-        convert_head_into_object(@category.parsed_head)
+        convert_head_into_object(__getobj__.parsed_head)
       end
 
       # Returns the word (string) being a head of the +category+ name.
@@ -26,20 +25,22 @@ module Cyclopedio
       # The might be more parse trees for categories such as "Cities and
       # villages in X", etc.
       def category_head_trees
-        if @category.multiple_heads?
-          @category.parsed_heads.map{|h| convert_head_into_object(h) }
+        if __getobj__.multiple_heads?
+          __getobj__.parsed_heads.map{|h| convert_head_into_object(h) }
         else
           [category_head_tree]
         end
       end
 
+      # Removes parentheses with content from concept name. Usually used for disambiguated article names.
       def remove_parentheses
-        return @category.name if @category.name !~ /\(/ || @category.name =~ /^\(/
-        @category.name.sub(/\([^)]*\)/,"").strip
+        return __getobj__.name if __getobj__.name !~ /\(/ || __getobj__.name =~ /^\(/
+        __getobj__.name.sub(/\([^)]*\)/,"").strip
       end
 
+      # Returns string in parentheses from concept name. Usually used for disambiguated article names.
       def type_in_parentheses
-        type = @category.name[/\([^)]*\)/]
+        type = __getobj__.name[/\([^)]*\)/]
         type ? type[1..-2] : ""
       end
 
